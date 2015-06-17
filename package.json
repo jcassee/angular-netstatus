@@ -1,0 +1,17 @@
+{
+  "name": "angular-netstatus",
+  "version": "1.0.0",
+  "description": "Detect and control online status in AngularJS applications.",
+  "repository": "https://github.com/jcassee/angular-netstatus",
+  "license": "MIT",
+  "devDependencies": {
+    "karma": "^0.12",
+    "karma-jasmine": "^0.3",
+    "karma-chrome-launcher": "^0.1",
+    "karma-coverage": "^0.4"
+  },
+  "scripts": {
+    "postinstall": "bower install",
+    "test": "karma start karma.conf.js  --single-run"
+  }
+}
