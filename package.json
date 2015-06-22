@@ -5,6 +5,7 @@
   "repository": "https://github.com/jcassee/angular-netstatus",
   "license": "MIT",
   "devDependencies": {
+    "jshint": "^2.8",
     "karma": "^0.12",
     "karma-jasmine": "^0.3",
     "karma-chrome-launcher": "^0.1",
@@ -12,6 +13,7 @@
   },
   "scripts": {
     "postinstall": "bower install",
+    "pretest": "jshint src",
     "test": "karma start karma.conf.js  --single-run"
   }
 }

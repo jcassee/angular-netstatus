@@ -18,6 +18,10 @@ Install using [Bower](http://bower.io):
 Add `src/netstatus.js` to your project. Many build tools will do this
 automatically.
 
+You can run the tests using `npm`:
+
+    $ npm test
+
 
 ## Usage
 
