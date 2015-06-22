@@ -67,13 +67,13 @@ angular.module('netstatus', [])
 
     function update(manualOffline) {
       manualOffline = !!manualOffline;  // force boolean
-      if (manualOffline != _manualOffline) {
+      if (manualOffline !== _manualOffline) {
         _manualOffline = manualOffline;
         $window.localStorage.setItem('netstatus.manualOffline', manualOffline ? 'true' : 'false');
       }
 
       var offline = service.browserOffline || manualOffline;
-      if (offline != _offline) {
+      if (offline !== _offline) {
         _offline = offline;
         $rootScope.$broadcast('netstatus', service.offline ? 'offline' : 'online');
       }
@@ -100,7 +100,7 @@ angular.module('netstatus', [])
    */
   .factory('NetstatusInterceptor', ['$location', '$log', '$q', '$window', 'Netstatus',
       function ($location, $log, $q, $window, Netstatus) {
-    var URL = $window.URL || $window.webkitURL;
+    var URL = $window.URL || $window.webkitURL || $window.URLUtils;
     var interceptPrefix = null;
 
     return {

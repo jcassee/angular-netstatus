@@ -45,4 +45,8 @@ endpoints, by setting `NetstatusInterceptor.interceptPrefix`:
       NetstatusInterceptor.interceptPrefix = 'https://api.example.com/';
     });
 
+**Note:** This feature uses the `window.URL` constructor. If you want to support
+browsers that do not have this constructor, you can include the shim [developed
+by Yaffle](https://gist.github.com/Yaffle/1088850) from `src/URLUtils.js`.
+
 The `NetstatusController` simply exposes the `Netstatus` service on the scope.
