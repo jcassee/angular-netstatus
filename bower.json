@@ -5,7 +5,9 @@
   "homepage": "https://github.com/jcassee/angular-netstatus",
   "license": "MIT",
   "main": "src/netstatus.js",
-  "ignore": ".*",
+  "ignore": [
+    ".*"
+  ],
   "dependencies": {
     "angular": "^1.3"
   },
