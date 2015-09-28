@@ -136,6 +136,7 @@ angular.module('netstatus', [])
           return $q.reject({
             status: 0,
             statusText: 'Offline',
+            headers: function () { return null; },
             config: config
           });
         } else {
@@ -144,10 +145,6 @@ angular.module('netstatus', [])
       }
     };
   }])
-
-  .config(function ($httpProvider) {
-    $httpProvider.interceptors.push('NetstatusInterceptor');
-  })
 
 /**
  * @ngdoc controller
