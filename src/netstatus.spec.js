@@ -128,7 +128,9 @@ describe('Netstatus', function () {
 
 
 describe('NetstatusInterceptor', function () {
-  beforeEach(module('netstatus'));
+  beforeEach(module('netstatus', function ($httpProvider) {
+    $httpProvider.interceptors.push('NetstatusInterceptor');
+  }));
 
   // Mocks
 
@@ -179,46 +181,30 @@ describe('NetstatusInterceptor', function () {
 
   // TODO: These tests need to be rewritten
   //
-  //it('does not intercept requests when online', inject(function ($http) {
-  //  $httpBackend.expectGET('http://example.com').respond('');
-  //  $http.get('http://example.com');
-  //  $httpBackend.flush();
-  //}));
-  //
-  //it('does not intercept requests when manual offline unless blockOffline is set', inject(function ($http) {
-  //  mockNetstatus.manualOffline = true;
-  //  $httpBackend.expectGET('http://example.com').respond('');
-  //  $http.get('http://example.com');
-  //  $httpBackend.flush();
-  //}));
-  //
-  //it('intercepts requests when manual offline and blockOffline is set', inject(function ($http, $rootScope, NetstatusInterceptor) {
-  //  mockNetstatus.manualOffline = true;
-  //  NetstatusInterceptor.blockManualOffline = true;
-  //  $http.get('http://example.com').catch(function (response) {
-  //    expect(response.status).toBe(0);
-  //  });
-  //  $rootScope.$digest();
-  //}));
-  //
-  //it('does not intercept non-prefix requests', inject(function ($http, $rootScope, NetstatusInterceptor) {
-  //  mockNetstatus.manualOffline = true;
-  //  NetstatusInterceptor.blockManualOffline = true;
-  //  NetstatusInterceptor.interceptPrefix = 'http://example.com/intercept/';
-  //  $httpBackend.expectGET('http://example.com/donotintercept/this').respond('');
-  //  $http.get('http://example.com/donotintercept/this');
-  //  $httpBackend.flush();
-  //}));
-  //
-  //it('intercepts prefix requests', inject(function ($http, $rootScope, NetstatusInterceptor) {
-  //  mockNetstatus.manualOffline = true;
-  //  NetstatusInterceptor.blockManualOffline = true;
-  //  NetstatusInterceptor.interceptPrefix = 'http://example.com/intercept/';
-  //  $http.get('http://example.com/intercept/this').catch(function (response) {
-  //    expect(response.status).toBe(0);
-  //  });
-  //  $rootScope.$digest();
-  //}));
+  it('does not intercept requests when online', inject(function ($http) {
+    $httpBackend.expectGET('http://example.com').respond('');
+    $http.get('http://example.com');
+    $httpBackend.flush();
+  }));
+
+  it('does not intercept non-prefix requests', inject(function ($http, $rootScope, NetstatusInterceptor) {
+    mockNetstatus.manualOffline = true;
+    NetstatusInterceptor.blockManualOffline = true;
+    NetstatusInterceptor.interceptPrefix = 'http://example.com/intercept/';
+    $httpBackend.expectGET('http://example.com/donotintercept/this').respond('');
+    $http.get('http://example.com/donotintercept/this');
+    $httpBackend.flush();
+  }));
+
+  it('intercepts prefix requests', inject(function ($http, $rootScope, NetstatusInterceptor) {
+    mockNetstatus.manualOffline = true;
+    NetstatusInterceptor.blockManualOffline = true;
+    NetstatusInterceptor.interceptPrefix = 'http://example.com/intercept/';
+    $http.get('http://example.com/intercept/this').catch(function (response) {
+      expect(response.status).toBe(0);
+    });
+    $rootScope.$digest();
+  }));
 });
 
 

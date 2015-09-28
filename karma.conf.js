@@ -14,7 +14,7 @@ module.exports = function (config) {
     browsers: ['Chrome'],
 
     preprocessors: {
-      'netstatus.js': ['coverage']
+      'src/netstatus.js': ['coverage']
     },
 
     reporters: ['progress', 'coverage'],
