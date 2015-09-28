@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.1
+
+- Fix tests.
+
 ## 1.1.0
 
 - Do not enable interceptor by default.

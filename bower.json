@@ -1,7 +1,7 @@
 {
   "name": "angular-netstatus",
   "description": "Detect and control online status in AngularJS applications.",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "homepage": "https://github.com/jcassee/angular-netstatus",
   "license": "MIT",
   "main": "src/netstatus.js",
