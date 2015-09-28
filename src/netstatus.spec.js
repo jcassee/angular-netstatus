@@ -144,7 +144,7 @@ describe('NetstatusInterceptor', function () {
     $provide.value('Netstatus', mockNetstatus);
 
     mockWindow = {
-      URL: window.URL || window.webkitURL
+      URLUtils: window.URLUtils
     };
     $provide.value('$window', mockWindow);
   }));
@@ -171,7 +171,7 @@ describe('NetstatusInterceptor', function () {
   }));
 
   it('throws an error when window.URL is not a constructor', function () {
-    mockWindow.URL = null;
+    mockWindow.URLUtils = null;
     inject(function (NetstatusInterceptor) {
       expect(function () {
         NetstatusInterceptor.interceptPrefix = 'http://example.com/';

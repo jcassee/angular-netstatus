@@ -100,7 +100,7 @@ angular.module('netstatus', [])
    */
   .factory('NetstatusInterceptor', ['$location', '$log', '$q', '$window', 'Netstatus',
       function ($location, $log, $q, $window, Netstatus) {
-    var URL = $window.URL || $window.webkitURL || $window.URLUtils;
+    var URL = $window.URLUtils || $window.webkitURL || $window.URL;
     var interceptPrefix = null;
 
     return {
