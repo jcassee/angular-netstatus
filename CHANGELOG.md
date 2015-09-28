@@ -1,5 +1,9 @@
 # Changelog
 
+## 1.1.2
+
+- Use PhantomJS for testing.
+
 ## 1.1.1
 
 - Fix tests.
